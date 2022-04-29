@@ -10,5 +10,5 @@ case class UserProfile(
   credentials: Credentials = Credentials("anonymous", "-"),
   role: Role = Role.User,
   lastLoginMs: Option[Long] = None,
-  notes: Option[Notes] = Some(Notes("initial note", Nil))
+  notes: Option[Notes] = Option(Notes("initial note", Nil))
 )

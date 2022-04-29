@@ -170,6 +170,18 @@ lazy val `u-json` = { project in file("modules/u-json") }
     }
   )
 
+  lazy val `zio-json` = { project in file("modules/zio-json") }
+  .dependsOn(core, api % "compile->compile;test->test")
+  .settings(
+    commonSettings,
+    name := "scala-jsonschema-zio-json",
+    libraryDependencies += {
+      val zioV = "0.1.5"
+      "dev.zio" %% "zio-json" % zioV
+    },
+    crossScalaVersions := List("2.12.15", "2.13.8")
+  )
+
 lazy val `joda-time` = { project in file("modules/joda-time") }
   .dependsOn(core, api)
   .settings(
@@ -330,7 +342,8 @@ lazy val root = { project in file(".") }
     `circe-json`,
     `spray-json`,
     `json4s-json`,
-    `u-json`
+    `u-json`,
+    `zio-json`
   )
   .settings(
     commonSettings,
